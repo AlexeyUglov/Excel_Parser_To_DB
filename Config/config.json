@@ -1,0 +1,14 @@
+{
+  "db": {
+    "username": "$DB_USERNAME",
+    "password": "$DB_PASSWORD",
+    "db_table_name": "Parsed_Excel_Data",
+    "host": "localhost",
+    "port": 5439,
+    "db_name": "postgres"
+  },
+
+  "input": {
+    "excel_file_name": "Model/Приложение_к_заданию_бек_разработчика.xlsx"
+  }
+}
