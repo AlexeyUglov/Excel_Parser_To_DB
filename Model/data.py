@@ -1,5 +1,5 @@
 import sqlalchemy as sqla
-from sqlalchemy import Engine
+from sqlalchemy import Engine, exc
 from sqlalchemy.orm import sessionmaker
 from typing import Any
 from Model.excel_data_row import Base, ExcelDataRow
@@ -20,4 +20,8 @@ class DB:
         Session = sessionmaker(bind=self.engine)
         self.session = Session()
         self.session.add_all(instances=self.excel_data_table.excel_data_rows)
-        self.session.commit()
+        try:
+            self.session.commit()
+        except exc.IntegrityError as e:
+            print(e.orig)
+            self.session.rollback()
